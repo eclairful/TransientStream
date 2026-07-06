@@ -78,13 +78,13 @@ Valid colors: Red | Blue | Yellow | Green | CPU`,
           if (elem.style.opacity == "0") elem.style.display = "none";
           else if (elem.style.opacity) elem.style.display = "block";
 
-          if (getVarFromCSS("teamLabelBrightness").endsWith("%")) {
+          if (getVarFromCSS("labelBrightness").endsWith("%")) {
             let percent = parseFloat(
-              getVarFromCSS("teamLabelBrightness").replace("%", ""),
+              getVarFromCSS("labelBrightness").replace("%", ""),
             );
             let raw = (percent / 100) * 255;
 
-            setCSSVar("teamLabelBrightness", raw);
+            setCSSVar("labelBrightness", raw);
           }
         }
 
@@ -106,7 +106,7 @@ Valid colors: Red | Blue | Yellow | Green | CPU`,
 
         --cardOutsideOpacity: 70%;
         --cardInsideOpacity: 60%;
-        --labelBrightness: 23%; /* Brightness of the team & pronoun labels */
+        --labelBrightness: 24%; /* Brightness of the team & pronoun labels */
 
         --p1Color: #e54c4c; /* replaces red */
         --card1_X: 18px;
@@ -291,12 +291,14 @@ Valid colors: Red | Blue | Yellow | Green | CPU`,
       }
 
       .teams {
-        color: rgb(116, 116, 116);
+        --c: var(--labelBrightness);
+        color: rgb(var(--c), var(--c), var(--c));
       }
 
       .pronouns {
         position: absolute;
-        color: rgb(0, 0, 0);
+        --c: var(--labelBrightness);
+        color: rgb(var(--c), var(--c), var(--c));
         font-size: 25px;
         width: 265px;
         height: 54px;
