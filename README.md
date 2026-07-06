@@ -1,27 +1,55 @@
 ![preview](doc/full_window.png)
 
-# Melee Ghost Streamer
+# TransientStream Overlay
 
-A fork of [Readek's Melee Stream Tool](https://github.com/Readek/Melee-Stream-Tool) with lots of features added, mainly automation.
+A fork of [Melee Ghost Streamer](https://github.com/shmeeli/Melee-Ghost-Streamer).
 
-## Added features
-* Automatically sets the characters, skin and ports based on the Slippi file.
-* Automatically fetches the players and round of the current set from start.gg.
-* Automatically fetches avatars and set history from PGStats.
-* Automatically keeps track of score. Detects handwarmers. Crews mode for decreasing stocks.
-* Automatically change the scene in OBS when a game starts, a game ends, or a set ends.
-* Automatically cuts out VODs for each set from an ongoing recording. Generates a thumbnail as well.
-* Option to prepare information for the next set. Option to automatically apply this when current set ends.
-* Option to create a replay. Option to automatically convert each replay to a vertial video (Youtube Short/TikTok).
-* Generates more text files and also images to use in OBS.
+Adds more customizability to the Melee Ghost Streamer overlay via CSS variables!
+
+Another tip, open `html/Game Scoreboard.html` in a browser window, then open inspect element.
+You can then modify the `:root` variables & see the changes in real time.
+
+##### To use this in OBS, add the following template to the custom css in your overlay's properties:
+
+```css
+:root {
+  /* player cards */
+
+  --cardOutsideOpacity: 70%;
+  --cardInsideOpacity: 60%;
+  --teamLabelBrightness: 60; /* on a scale from 0 to 255 */
+
+  --p1Color: #e54c4c; /* replaces red */
+  --card1_X: 18px;
+  --card1_Y: 17px;
+
+  --p2Color: #4b4ce5; /* replaces blue */
+  --card2_X: 318px;
+  --card2_Y: 17px;
+
+  /* round overlay */
+
+  --round_opacity: 90%;
+  --round_X: 210px;
+  --round_-Y: 64px; /* negative cuz it's from the bottom lol */
+  --round_scale: 110%;
+
+  /* casters overlay (names, socials, etc) */
+
+  --casters_opacity: 90%;
+  --casters_X: -61px;
+  --casters_-Y: 48px; /* negative cuz it's from the bottom lol */
+  --casters_scale: 90%;
+}
+```
 
 ---
 
 ## Install
 
-1. Download the latest [release](https://github.com/Sheepolution/Melee-Ghost-Streamer/releases).
+1. Download this repository as ZIP.
 2. Unzip the files.
-3. Start `Melee Ghost Streamer.exe`.
+3. Start `Melee Ghost Streamer 1.0.5.exe`.
 
 ⚠️ Note: For the video features (VODs, replays, shorts) you will need [FFmpeg](https://ffmpeg.org/) installed and have it in your [environment path](https://superuser.com/questions/284342/what-are-path-and-other-environment-variables-and-how-can-i-set-or-use-them).
 
@@ -45,7 +73,7 @@ Example: `C:\Users\Sheep\Videos\2023-05-17 15-49-51.mkv`
 
 ### OBS websocket
 
-This is for automatic stream switching. Enter the information to connect with OBS websocket (In OBS go to Tools -> Websocket Server Settings). You probably only need to set the password, and only if you have enabled the password in OBS. 
+This is for automatic stream switching. Enter the information to connect with OBS websocket (In OBS go to Tools -> Websocket Server Settings). You probably only need to set the password, and only if you have enabled the password in OBS.
 
 ### Start.gg bracket url
 
@@ -57,10 +85,10 @@ Note that if your brackets are split over multiple pages you will need to change
 
 ### Players
 
-* Auto name - Whether to automatically use the Slippi Netplay name as the name of the player.
-* Lower port prio - By default the higher port priority is the first player. Enable this to swap it around.
-* NEW - Starts a new set. Resets the score and internal data for cutting the VOD. Useful when switching from playing friendlies over to bracket.
-* END - End a set. Use this in case the set is over but you missed a game or something.
+- Auto name - Whether to automatically use the Slippi Netplay name as the name of the player.
+- Lower port prio - By default the higher port priority is the first player. Enable this to swap it around.
+- NEW - Starts a new set. Resets the score and internal data for cutting the VOD. Useful when switching from playing friendlies over to bracket.
+- END - End a set. Use this in case the set is over but you missed a game or something.
 
 ### Next round
 
@@ -87,15 +115,15 @@ Replays will appear in the `Replays` folder in the directory of your OBS mkv rec
 
 You can check `Auto` to automatically make replays when a combo happens. The current conditions for a combo are a combination of two of these:
 
-* Percentage is increased by 30%
-* There were 4 or more consecutive moves
-* The combo killed
+- Percentage is increased by 30%
+- There were 4 or more consecutive moves
+- The combo killed
 
 Depending on the player this can make for either a lot or no replays, and won't be of the best quality. Therefore you should only use this option when you have no one to manually click the replay button. In the future I will add an option to configure these conditions.
 
 #### Shorts
 
-You can enable `Convert to short` to automatically convert a replay into a Youtube Short/TikTok video (a vertical video). The way this works is that it cuts the video into three parts. This is with the assumption that most Melee layouts have a left bar, a right bar, and the game in the center. You can configure the coordinates in [resources/Recordings/Shorts/coordinates.json](resources/Recordings/Shorts/coordinates.json). When `scaleVertical` is set to `false` the left and right bar will be scaled until the reach the center. When set to `true` they scale until they reach the bottom. The height of the video is the width of the center part * 16 / 9, to create a 9:16 resolution. Currently the automated shorts are limited to this three parts usecase.
+You can enable `Convert to short` to automatically convert a replay into a Youtube Short/TikTok video (a vertical video). The way this works is that it cuts the video into three parts. This is with the assumption that most Melee layouts have a left bar, a right bar, and the game in the center. You can configure the coordinates in [resources/Recordings/Shorts/coordinates.json](resources/Recordings/Shorts/coordinates.json). When `scaleVertical` is set to `false` the left and right bar will be scaled until the reach the center. When set to `true` they scale until they reach the bottom. The height of the video is the width of the center part \* 16 / 9, to create a 9:16 resolution. Currently the automated shorts are limited to this three parts usecase.
 
 You can click the `SHORT` button to create a short by hand. For this, instead of the OBS mkv recording path, you set the path to the video you want to turn into a short.
 
@@ -105,10 +133,10 @@ Shorts will appear in the `Shorts` folder in the directory of your OBS mkv recor
 
 Click the hamburger menu in the bottom right to open the settings. Press escape or click somewhere on the left to go back.
 
-* Allow intro - Plays an intro on [Game Scoreboard.html](html/Game%20Scoreboard.html) whenever the file loads.
-* Forces the [W]/[L] buttons to appear on the interface. They will always appear when typing 'Grand' on the round box.
-* Uppercase text - Makes all the text uppercase. Kinda useless actually when I realized OBS has an option for this.
-* Add space - Adds a space to all text. In OBS text can be cut off with certain fonts. Adding a space is a dumb solution that works.
+- Allow intro - Plays an intro on [Game Scoreboard.html](html/Game%20Scoreboard.html) whenever the file loads.
+- Forces the [W]/[L] buttons to appear on the interface. They will always appear when typing 'Grand' on the round box.
+- Uppercase text - Makes all the text uppercase. Kinda useless actually when I realized OBS has an option for this.
+- Add space - Adds a space to all text. In OBS text can be cut off with certain fonts. Adding a space is a dumb solution that works.
 
 #### Create set VODs
 
@@ -121,6 +149,7 @@ A thumbnail will be created as well. You can customize this thumbnail a bit by c
 Enable this to fetch the avatars and set history of the players, based on the names you filled in the player fields. Note that this can take a few seconds. When there are multiple players with the same name on PGStats it will try to find the correct player with a few tricks. If all fails, it will use the player that has most recently entered a tournament.
 
 ### Shortcuts
+
 - Press `Enter` to update.
 - Press either `F1` or `F2` to increase P1's or P2's score.
 - Press `ESC` to clear player info.
@@ -149,21 +178,24 @@ With an OBS script you can automatically add the replays to a VLC source. For th
 Now when you create a replay the script will detect this and add it to the VLC source. After you have opened the scene with this source, and you create another replay, it will empty the playlist and add this new replay.
 
 Example:
+
 1. You are on the scene `Match` and create three replays.
 2. You go to the scene `Replays` with the VLC source.
 3. You go back to the scene `Match`.
-4. You create another replay. Because you have opened the scene with the VLC source, the other three replays are removed from the playlist, and this new replay will be added. 
+4. You create another replay. Because you have opened the scene with the VLC source, the other three replays are removed from the playlist, and this new replay will be added.
 
 ### Game Scoreboard.html guide
 
 These are instructions for regular OBS Studio, but I imagine you can do the same with other streaming software:
+
 - Drag and drop [html/Game Scoreboard.html](html/Game%20Scoreboard.html) into OBS, or add a new browser source in OBS pointing at the local file.
 - If the source looks weird, manually set the source's properties to 1920 width and 1080 height, or set your OBS canvas resolution to 1080p, or make the source fit the screen.
-- In the source's properties, change *Use custom frame rate* -> `60` (if streaming at 60fps of course).
+- In the source's properties, change _Use custom frame rate_ -> `60` (if streaming at 60fps of course).
 - **Also tick** `Refresh browser when scene becomes active`.
 - Manage it all with the `Melee Ghost Streamer` executable.
 
 2 basic transitions are included in the `Resources/OBS Transitions` folder, if you don't have a transition yourself of course. To use them on OBS:
+
 - Add a new stinger transition.
 - Set the video file to `Game In.webm` or `Swoosh.webm`.
 - Transition point -> `350 ms`.
@@ -207,13 +239,14 @@ Most of the code is in [gui.js](app/src/gui.js).
 You can use `npm run dist` to build a new executable.
 
 ---
+
 ## Shmeeli
 
 ## Sheepolution
 
 If you use this tool for your tournament/local I would love to know. It might motivate me to continue working on it, and who knows, maybe make a proper UI. For that, or for any questions, contact me on Twitter [@Sheepolution](https://twitter.com/Sheepolution).
 
-If you're generous, you can tip me here: [Buy me a ko-fi](https://ko-fi.com/sheepolution). But  consider tipping Readek as well. This tool would not have existed without him.
+If you're generous, you can tip me here: [Buy me a ko-fi](https://ko-fi.com/sheepolution). But consider tipping Readek as well. This tool would not have existed without him.
 
 ## Readek's original message
 
@@ -224,4 +257,3 @@ Do you want to support [[the original tool](https://github.com/Readek/Melee-Stre
 ---
 
 Resources: [The spriters resource](https://www.spriters-resource.com/search/?q=melee), the [Melee HD Asset Library](https://assets.melee.tv/), and the [VS poses](https://smashboards.com/threads/download-available-poses-for-classic-mode-vs.435797/).
-
