@@ -1,12 +1,19 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Metadata -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Melee Game Overlay</title>
 
-    <script src="../resources/Scripts/Game Scoreboard.js"></script>
-    <script src="../resources/Scripts/gsap.min.js"></script>
+    <!-- Stylesheet Links -->
+    <link rel="stylesheet" href="../css/Default Variables.css" />
+    <link rel="stylesheet" href="../css/Fonts.css" />
+
+    <!-- Script Links -->
+    <script src="../scripts/js/gsap.min.js"></script>
+    <script src="../scripts/js/Game Scoreboard.js"></script>
+    <script src="../scripts/js/init.js" defer></script>
 
     <!-- Override script for before page load -->
     <script>
@@ -96,41 +103,6 @@ Valid colors: Red | Blue | Yellow | Green | CPU`,
 
       setInterval(elemMonitorTick, 250);
     </script>
-
-    <style>
-      :root {
-        /* For editing */
-        --DEV_MODE: false;
-
-        /* player cards */
-
-        --cardOutsideOpacity: 70%;
-        --cardInsideOpacity: 60%;
-        --labelBrightness: 24%; /* Brightness of the team & pronoun labels */
-
-        --p1Color: #e54c4c; /* replaces red */
-        --card1_X: 18px;
-        --card1_Y: 17px;
-
-        --p2Color: #4b4ce5; /* replaces blue */
-        --card2_X: 318px;
-        --card2_Y: 17px;
-
-        /* round overlay */
-
-        --round_opacity: 90%;
-        --round_X: 210px;
-        --round_-Y: 64px; /* negative cuz it's from the bottom lol */
-        --round_scale: 110%;
-
-        /* casters overlay (names, socials, etc) */
-
-        --casters_opacity: 90%;
-        --casters_X: -61px;
-        --casters_-Y: 48px; /* negative cuz it's from the bottom lol */
-        --casters_scale: 90%;
-      }
-    </style>
 
     <style>
       @font-face {
@@ -305,7 +277,6 @@ Valid colors: Red | Blue | Yellow | Green | CPU`,
         line-height: 54px;
         text-align: center;
         opacity: 1;
-        color: black;
       }
 
       .scores {

@@ -1,0 +1,32 @@
+:root {
+  /* For editing */
+  --DEV_MODE: true;
+
+  /* player cards */
+
+  --cardOutsideOpacity: 70%;
+  --cardInsideOpacity: 60%;
+  --labelBrightness: 24%; /* Brightness of the team & pronoun labels */
+
+  --p1Color: #e54c4c; /* replaces red */
+  --card1_X: 18px;
+  --card1_Y: 17px;
+
+  --p2Color: #4b4ce5; /* replaces blue */
+  --card2_X: 318px;
+  --card2_Y: 17px;
+
+  /* round overlay */
+
+  --round_opacity: 90%;
+  --round_X: 210px;
+  --round_-Y: 64px; /* negative cuz it's from the bottom lol */
+  --round_scale: 110%;
+
+  /* casters overlay (names, socials, etc) */
+
+  --casters_opacity: 90%;
+  --casters_X: -61px;
+  --casters_-Y: 48px; /* negative cuz it's from the bottom lol */
+  --casters_scale: 90%;
+}

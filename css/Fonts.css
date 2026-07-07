@@ -1,0 +1,24 @@
+@font-face {
+  font-family: "Deansgate";
+  src: url("../resources/Fonts/DeansgateCondensed-Bold.ttf");
+}
+
+@font-face {
+  font-family: "Mario";
+  src: url("../resources/Fonts/SuperMario256.ttf");
+}
+
+@font-face {
+  font-family: "FolkMedium";
+  src: url("../resources/Fonts/A-OTF-FolkPro-Medium.otf");
+}
+
+@font-face {
+  font-family: "FolkHeavy";
+  src: url("../resources/Fonts/A-OTF-FolkPro-Heavy.otf");
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("../resources/Fonts/Roboto-Bold.ttf");
+}
