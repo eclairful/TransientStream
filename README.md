@@ -17,7 +17,7 @@ You can then modify the `:root` variables & see the changes in real time.
 
   --cardOutsideOpacity: 70%;
   --cardInsideOpacity: 60%;
-  --teamLabelBrightness: 60; /* on a scale from 0 to 255 */
+  --labelBrightness: 24%; /* Brightness of the team & pronoun labels */
 
   --p1Color: #e54c4c; /* replaces red */
   --card1_X: 18px;

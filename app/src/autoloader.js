@@ -3,6 +3,7 @@ const chokidar = require("chokidar");
 let directory;
 let watcher;
 
+
 let callbackStarted;
 let callbackFinished;
 let callbackReplay;
