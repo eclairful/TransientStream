@@ -47,9 +47,21 @@ You can then modify the `:root` variables & see the changes in real time.
 
 ## Install
 
+###Windows
+
 1. Download this repository as ZIP.
 2. Unzip the files.
 3. Start `Melee Ghost Streamer 1.0.5.exe`.
+
+###Linux
+
+1. install npm as a command line argument using 
+```
+sudo apt update
+sudo apt install npm
+```
+2. Clone the repo
+3. run "run.sh" with your terminal at the base directory of the repo
 
 ⚠️ Note: For the video features (VODs, replays, shorts) you will need [FFmpeg](https://ffmpeg.org/) installed and have it in your [environment path](https://superuser.com/questions/284342/what-are-path-and-other-environment-variables-and-how-can-i-set-or-use-them).
 
